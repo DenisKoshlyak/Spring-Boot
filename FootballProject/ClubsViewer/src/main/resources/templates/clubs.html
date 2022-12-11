@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+ 		<title>My clubs</title>
+ 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	</head>
+	
+	<body>
+		<div class="clubslist" th:unless="${#lists.isEmpty(allClubs)}">
+ 		<h2>Look at all my football clubs!</h2>
+ 		<table>
+ 			<thead>
+ 				<tr>
+ 					<th>Name</th>
+ 					<th>Coast</th>
+ 					<th>Balance</th>
+ 					<th>Rating</th>
+ 					<th></th>
+ 				</tr>
+ 			</thead>
+ 			<tbody>
+ 				<tr th:each="ac : ${allClubs}">
+ 					<td th:text="${ac.name}"></td>
+ 					<td th:text="${ac.coast}"></td>
+ 					<td th:text="${ac.balance}"></td>
+ 					<td th:text="${ac.rating}"></td>
+ 					</tr>
+ 			</tbody>
+ 		</table>
+		</div>
+		<script type="text/javascript">
+ 			window.onload = setupRefresh;
+ 			function setupRefresh() {
+ 				setTimeout("refreshPage();", 5000); // частота обновления в миллисекундах
+ 			}
+ 			function refreshPage() {
+ 				window.location = location.href;
+ 			}
+		</script>
+	</body>
+</html>
